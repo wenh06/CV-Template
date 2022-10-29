@@ -1,0 +1,35 @@
+\ifCoverLetter
+
+\clearpage
+
+\ifChinese
+
+\recipient{HR Department}{Corporation\\123 Pleasant Lane\\12345 City, State} % Letter recipient
+\date{\today} % Letter date
+\opening{Dear Sir or Madam,} % Opening greeting
+\closing{Sincerely yours,} % Closing phrase
+\enclosure[Attached]{curriculum vit\ae{}} % List of enclosed documents
+
+\makelettertitle % Print letter title
+
+\zhlipsum[1-3] % Dummy text
+
+\makeletterclosing % Print letter signature
+
+\else  % else of \ifChinese
+
+\recipient{HR Department}{Corporation\\123 Pleasant Lane\\12345 City, State} % Letter recipient
+\date{\today} % Letter date
+\opening{Dear Sir or Madam,} % Opening greeting
+\closing{Sincerely yours,} % Closing phrase
+\enclosure[Attached]{curriculum vit\ae{}} % List of enclosed documents
+
+\makelettertitle % Print letter title
+
+\lipsum[1-3] % Dummy text
+
+\makeletterclosing % Print letter signature
+
+\fi  % fi of \ifChinese
+
+\fi  % fi of \ifCoverLetter

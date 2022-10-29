@@ -1,0 +1,116 @@
+\documentclass[10pt]{article}
+\usepackage[left=3cm,right=3cm,top=3cm,bottom=2.5cm,headheight=3cm,headsep=0cm]{geometry}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage[export]{adjustbox}
+\usepackage{tabularx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+\usepackage{marvosym}
+\usepackage{fontawesome}
+\usepackage{mathrsfs}
+\usepackage{amsthm,amsfonts,amsmath,amssymb}
+\usepackage{indentfirst}
+\usepackage{lipsum}
+\usepackage{zhlipsum}
+
+%---------------------------------------------------------
+% colors
+
+\input{commons/colors}
+
+%---------------------------------------------------------
+% switches
+
+\newif\ifPastResearch
+\newif\ifResearchPlan
+\newif\ifTeaching
+\newif\ifMisc
+
+\ifdefined\ifChinese
+% pass
+\else
+\newif\ifChinese
+\fi
+
+% \Chinesetrue
+
+%---------------------------------------------------------
+% header
+
+\ifChinese
+
+\fancypagestyle{myfancy}
+{\fancyhf{}
+\fancyhead[R]{{\huge 科研工作设想} \\ \color{gray!50} \hrulefill \\ \LARGE 文豪}
+\renewcommand{\headrulewidth}{0pt}% Remove header rule
+}
+
+\else  % else of \ifChinese
+
+\fancypagestyle{myfancy}
+{\fancyhf{}
+\fancyhead[R]{{\huge Research Statement} \\ \color{gray!50} \hrulefill \\ \LARGE Hao Wen}
+\renewcommand{\headrulewidth}{0pt}% Remove header rule
+}
+
+\fi  % fi of \ifChinese
+
+\pagestyle{myfancy}
+
+%---------------------------------------------------------
+% font settings
+\input{fonts/font-settings}
+
+%---------------------------------------------------------
+
+
+\begin{document}
+
+
+%----------------------------------------------------
+% past research section
+\PastResearchtrue
+
+\ifPastResearch
+\input{research_statement/past_research}
+\fi  % fi of \ifPastResearch
+
+%----------------------------------------------------
+
+
+%----------------------------------------------------
+% research plan section
+\ResearchPlantrue
+
+\ifResearchPlan
+\input{research_statement/research_plan}
+\fi  % fi of \ifResearchPlan
+
+%----------------------------------------------------
+
+
+%----------------------------------------------------
+% teaching statement section
+\Teachingtrue
+
+\ifTeaching
+\input{research_statement/teaching_statement}
+\fi  % fi of \ifTeaching
+
+%----------------------------------------------------
+
+
+%----------------------------------------------------
+% misc section
+\Misctrue
+\Miscfalse
+
+\ifMisc
+\input{research_statement/misc.tex}
+\fi
+
+%----------------------------------------------------
+
+\end{document}

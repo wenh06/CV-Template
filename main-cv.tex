@@ -1,0 +1,127 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% "ModernCV" CV and Cover Letter
+% LaTeX Template
+% Version 1.11 (19/6/14)
+%
+% Original template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Xavier Danaux (xdanaux@gmail.com)
+%
+% Modified by:
+% WEN Hao (wenh06@gmail.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Important note:
+% This template requires the moderncv.cls and .sty files to be in the same 
+% directory as this .tex file. These files provide the resume style and themes 
+% used for structuring the document.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[10pt,a4paper,sans]{moderncv} % Font sizes: 10, 11, or 12; paper sizes: a4paper, letterpaper, a5paper, legalpaper, executivepaper or landscape; font families: sans or roman
+
+\moderncvstyle{classic} % CV theme - options include: 'casual' (default), 'classic', 'oldstyle', 'fancy', and 'banking'
+
+%-------------------------------------------------------
+% definition of colors
+
+\input{commons/colors}
+
+%-------------------------------------------------------
+
+\moderncvcolor{tsinghua-1} % CV color - options include: 'tsinghua', 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+
+% \usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+
+\usepackage[scale=.88]{geometry} % Reduce document margins
+%\setlength{\hintscolumnwidth}{3cm} % Uncomment to change the width of the dates column
+%\setlength{\makecvtitlenamewidth}{10cm} % For the 'classic' style, uncomment to adjust the width of the space allocated to your name
+% \usepackage{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{graphicx}
+
+\moderncvicons{academic}
+
+
+%-------------------------------------------------------
+% bib settings
+
+\input{commons/bib-settings}
+
+%-------------------------------------------------------
+
+
+%-------------------------------------------------------
+% new commands
+
+\input{commons/newcommands}
+
+%-------------------------------------------------------
+
+
+%-------------------------------------------------------
+% switches
+
+\input{commons/switches}
+
+\ifdefined\ifChinese
+% pass
+\else
+\newif\ifChinese
+\fi
+
+% \Chinesetrue
+\HighSchoolfalse
+
+% more switches can be found in commons/switches.tex
+% \EducationSectiontrue
+% \AwardsSectionfalse
+% \ResearchInterestSectiontrue
+% \ResearchExperienceSectiontrue
+% \WorkExperienceSectiontrue
+% \PublicationsSectiontrue
+% \PhdThesisSectionfalse
+% \InvitedTalksSectiontrue
+% \TeachingSectiontrue
+% \MiscSectionfalse
+% \LanguageSectiontrue
+% \SkillsAndOscSectiontrue
+% \InterestsSectionfalse
+% \ListReferencesfalse
+% \CoverLetterfalse
+% \TeachingStatementfalse
+% \ResearchStatementfalse
+
+%-------------------------------------------------------
+
+
+%-------------------------------------------------------
+% heading
+
+\input{commons/heading}
+
+%-------------------------------------------------------
+
+
+\begin{document}
+
+%-------------------------------------------------------
+% contents
+
+\input{cv-content/academic}
+
+% content/company.tex out-of-date
+% \input{content/company}
+
+%-------------------------------------------------------
+
+\end{document}

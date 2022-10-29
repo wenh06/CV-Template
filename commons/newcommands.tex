@@ -1,0 +1,19 @@
+\newcommand{\cvdoublecolumn}[2]{
+  \cvitem[0.75em]{}{
+    \begin{minipage}[t]{\listdoubleitemcolumnwidth}#1\end{minipage}
+    \hfill
+    \begin{minipage}[t]{\listdoubleitemcolumnwidth}#2\end{minipage}
+  }
+}
+
+\newcommand{\cvreference}[9]{
+  \textbf{#1}\newline % Name
+  \ifthenelse{\equal{#2}{}}{}{\addresssymbol~#2\newline} % address
+  \ifthenelse{\equal{#3}{}}{}{#3\newline} % department
+  \ifthenelse{\equal{#4}{}}{}{#4\newline} % affiliation
+  \ifthenelse{\equal{#5}{}}{}{#5\newline} % city, country
+  \ifthenelse{\equal{#6}{}}{}{\homepagesymbol~#6\newline} % homepage
+  \ifthenelse{\equal{#7}{}}{}{\emailsymbol~\texttt{\href{mailto:#7}{\nolinkurl{#7}}} \newline} % email
+  \ifthenelse{\equal{#8}{}}{}{\fixedphonesymbol~#8\newline} % fixed phone
+  \ifthenelse{\equal{#9}{}}{}{\mobilephonesymbol~#9} % mobile phone
+}

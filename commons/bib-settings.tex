@@ -1,0 +1,113 @@
+
+% \usepackage[style=authoryear,sorting=ydnt,dashed=false,maxbibnames=99]{biblatex}
+
+% \renewbibmacro*{date}{}
+% \renewbibmacro*{date+extrayear}{}
+% \renewbibmacro*{issue+date}{}
+% \newcommand*{\bibyear}{}
+
+% \defbibenvironment{bibliography}
+% {\list
+%  {\iffieldequals{year}{\bibyear}
+%     {}
+%     {\printfield{year}%
+%      \savefield{year}{\bibyear}}}
+%  {\setlength{\topsep}{0pt}% layout parameters based on moderncvstyleclassic.sty
+%   \setlength{\labelwidth}{\hintscolumnwidth}%
+%   \setlength{\labelsep}{\separatorcolumnwidth}%
+%   \setlength{\itemsep}{\bibitemsep}%
+%   \leftmargin\labelwidth%
+%   \advance\leftmargin\labelsep}%
+%   \sloppy\clubpenalty4000\widowpenalty4000}
+% {\endlist}
+% {\item}
+
+% \addbibresource{publications.bib}
+
+\usepackage{moderntimeline}
+\tlmaxdates{2016}{2023}
+
+\newif\ifnumericCVbibliography
+\numericCVbibliographytrue % replace true with false to disable
+\newlength{\hintscolumnwidthV}
+\setlength\hintscolumnwidthV{\hintscolumnwidth}
+\newlength{\labelkern}
+\ifnumericCVbibliography
+  \setlength\labelkern{-2ex}
+  \usepackage[backend = biber,
+              style   = nature,
+              sorting=ydnt
+             ]{biblatex}
+  \newcommand{\printbibnumber}{%\hspace* here has no effect so I removed it
+      \llap{\printtext[labelnumberwidth]{%
+              \printfield{labelprefix}%
+              \printfield{labelnumber}
+              }\kern\labelkern% to reduce space between label and timeline image
+            }%
+  }
+\else
+  \usepackage[backend = biber,
+              style   = authoryear,
+              sorting=ydnt
+             ]{biblatex}
+  \newcommand{\printbibnumber}{\relax} % do nothing
+  \setlength\labelkern{0ex}
+  \setlength\hintscolumnwidthV{\hintscolumnwidth} % this length needs 
+  % to be re-set or it keeps the numeric  version value if that has been run before
+\fi
+\addbibresource{publications.bib}
+%-----------------------------------------------------------
+\makeatletter
+\newcommand*{\cventryV}[1][.25em]{}
+% timeline for bibliography
+\newcommand{\tldatecventryV}[2][color1]{%
+\issincefalse
+\tl@formatstartyear{#2}
+\cventryV{\tikz[baseline=0pt]{
+    \useasboundingbox (0ex,0ex) rectangle (\hintscolumnwidthV,1ex); 
+    %changed origin of boundingbox. previous was (2ex,0ex) but this 
+    % creates alignment problems when switching between numeric and non numeric.
+    \fill [\tl@runningcolor] (0,0)
+       rectangle (\hintscolumnwidthV,\tl@runningwidth);
+    \fill [#1] (0,0)
+       ++(\tl@startfraction*\hintscolumnwidthV,0pt)
+       node [tl@singleyear] {#2}
+       node {$\bullet$};
+  }}}
+\makeatother
+%-----------------------------------
+\defbibenvironment{bibliography}
+  {\list
+   {\printbibnumber% here you see the macro in action
+    \tldatecventryV{%
+      \thefield{year} % actual year from bibitem
+       }}
+       {%
+        \setlength{\topsep}{0pt}% layout parameters based on moderncvstyleclassic.sty
+        \addtolength\hintscolumnwidthV{-\labelnumberwidth}% num - changes timeline image length
+        \addtolength\hintscolumnwidthV{\labelkern}% num  - changes timeline image length
+        \setlength{\bibhang}{\hintscolumnwidthV} % custom bibhang
+        \setlength{\labelsep}{\separatorcolumnwidth} %  horizontal distance between label and entry
+        \setlength{\leftmargin}{\hintscolumnwidth} % sets where the left margin is
+        \addtolength{\leftmargin}{\separatorcolumnwidth} %
+        \setlength{\itemindent}{-\bibhang} % this sets indentation of the second line of the entry.
+        % changing it moves also the first line left or right
+        \addtolength{\itemindent}{-\separatorcolumnwidth} % to align the second line exactly
+        \setlength{\itemsep}{\bibitemsep} % vertical distance between bib items
+        \setlength{\parsep}{\bibparsep}}}
+  {\endlist}
+  {\item}
+%-----------------------
+\AtEveryBibitem{\clearfield{year}}
+%-------------------------------------------------------------------------------
+%  reverse numbering of publications
+%-------------------------------------------------------------------------------
+% Count total number of entries in each refsection
+\AtDataInput{%
+  \csnumgdef{entrycount:\therefsection}{%
+    \csuse{entrycount:\therefsection}+1}}
+% Print the labelnumber as the total number of entries in the
+% current refsection, minus the actual labelnumber, plus one
+\DeclareFieldFormat{labelnumber}{\mkbibdesc{#1}}
+\newrobustcmd*{\mkbibdesc}[1]{%
+  \number\numexpr\csuse{entrycount:\therefsection}+1-#1\relax}

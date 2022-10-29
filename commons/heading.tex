@@ -1,0 +1,66 @@
+% requires load commons/switches before loading this file
+
+\ifChinese
+
+\input{fonts/font-settings}
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CONTACT INFORMATION SECTION
+%----------------------------------------------------------------------------------------
+
+\firstname{文豪} % Your first name
+\familyname{ } % Your last name
+
+% \renewcommand*{\refname}{发表文章}
+
+
+% All information in this block is optional, comment out any lines you don't need
+\title{个人简历}
+% \address{近春园西楼数学中心 309,}{北京, 清华大学， 100084}
+\address{北京航空航天大学}{沙河校区E301}
+
+%----------------------------------------------------------------------------------------
+% socials
+
+\input{commons/socials}
+
+%----------------------------------------------------------------------------------------
+
+\extrainfo{
+{\color{weixin}\faWeixin} wen2010310927 \\{\color{tsinghua}性别} 男 {\color{tsinghua}|} {\color{tsinghua}出生日期} 1987.12.16
+}
+\photo[92pt][0.4pt]{images/bachelor} % The first bracket is the picture height, the second is the thickness of the frame around the picture (0pt for no frame)
+%\quote{"A witty and playful quotation" - John Smith}
+%----------------------------------------------------------------------------------------
+
+
+\else  % else of \ifChinese
+
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CONTACT INFORMATION SECTION
+%----------------------------------------------------------------------------------------
+
+\firstname{Hao} % Your first name
+\familyname{WEN} % Your last name
+
+
+% All information in this block is optional, comment out any lines you don't need
+\title{Curriculum Vitae}
+\address{E301, Shahe Campus}{Beihang University}
+
+%----------------------------------------------------------------------------------------
+% socials
+
+\input{commons/socials}
+
+%----------------------------------------------------------------------------------------
+
+\extrainfo{
+{\color{weixin}\faWeixin} wen2010310927 \\{\color{tsinghua}Gender} Male {\color{tsinghua}|} {\color{tsinghua}Born} 1987.12.16
+}
+\photo[87pt][0.4pt]{images/bachelor} % The first bracket is the picture height, the second is the thickness of the frame around the picture (0pt for no frame)
+%\quote{"A witty and playful quotation" - John Smith}
+%----------------------------------------------------------------------------------------
+
+\fi  % fi of \ifChinese
